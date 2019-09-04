@@ -10,16 +10,18 @@ public class KlasaZWatkiemGlownym {
         System.out.println("===Metoda Główna === To jest metoda glowna ");
 
         Runnable runnable = () ->{
-          System.out.println(">>>Wątek do wyokonania zadania async");
+          System.out.println(">>>Wątek do wykonania zadania async");
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+          eventListener.callbackFunction();
         };
         Thread t1 = new Thread(runnable);
         t1.start();
 
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
         System.out.println("===Metoda Główna === Tutaj konczy sie metoda glowna");
     }
 
